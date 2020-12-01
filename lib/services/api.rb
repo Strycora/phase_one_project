@@ -12,7 +12,6 @@ class Api
     def self.load_ten_jokes
         response = RestClient.get(base_url + "/random_ten")
         data = JSON.parse(response.body)
-        binding.pry
         data.each do |ele|
             Jokes.new(ele)
         end
