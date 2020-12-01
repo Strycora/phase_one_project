@@ -1,6 +1,8 @@
 require "jokeapp/version"
+require 'rest-client'
+require 'pry'
+require 'json'
 
-module Jokeapp
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require_relative "./models/jokes"
+require_relative "./services/api"
+require_relative "./services/cli"
