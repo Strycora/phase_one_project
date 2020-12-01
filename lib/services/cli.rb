@@ -1,11 +1,7 @@
 class Cli
 
     def start
-        puts "Welcome to the Joke app!"
-        
-        puts "loading.."
         Api.load_data
-        #binding.pry
         main_menu_options
 
     end
@@ -19,14 +15,12 @@ class Cli
 
     def main_menu
         input = get_input
-        #binding.pry
         if input == "1"
            Jokes.all.each_with_index do |joke, index|
             puts "#{index+1}. #{joke.setup}"
         
             end
             sub_menu
-            #binding.pry
         else
             return "Exiting program..."
         end
@@ -35,12 +29,16 @@ class Cli
     def sub_menu
         puts "Select a joke that you want to hear the punchline to"
         input = get_input
-        index = input.to_i - 1 
-        joke = Jokes.all[index]
-        #binding.pry
-            puts "#{joke.punchline}!"
-        
-        main_menu_options
+        if input == "1" || input == "2" || input == "3" || input == "4" || input == "5" || input == "6" || input == "7" || input == "8" || input == "9" || input == "10"
+            index = input.to_i - 1 
+                    joke = Jokes.all[index]
+                        puts "#{joke.punchline}"
+                        Jokes.clear
+        else 
+            puts "Invalid Input"
+            Jokes.clear
+        end
+        start
     end
 
     def get_input
