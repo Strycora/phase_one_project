@@ -1,4 +1,4 @@
-require "jokeapp/version"
+#require "jokeapp/version"
 require 'rest-client'
 require 'pry'
 require 'json'

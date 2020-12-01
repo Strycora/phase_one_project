@@ -1,3 +1,7 @@
 #!/usr/bin/env ruby
 
+require_relative "../lib/environment"
+
 puts "Hello World"
+
+Cli.new.start
