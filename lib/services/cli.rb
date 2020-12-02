@@ -8,7 +8,7 @@ class Cli
         puts "  "
         puts "Enter 1 in order to get '10 random jokes'"
         puts "Enter 2 in order to get jokes by 'Type'"
-        puts "Any other entry will exit the program."
+        puts "Or type 'exit' to exit the program."
         puts "  "
         main_menu
     end
@@ -50,9 +50,14 @@ class Cli
                     puts "Invalid Input - returning to Main Menu"
                     main_menu
                 end
-        else
+        elsif input == "exit"
             puts "Exiting program..."
             puts "  "
+
+        else
+            puts "Invalid Input - returning to Main Menu"
+            puts "   "
+            start
         end
     end
 
