@@ -14,7 +14,7 @@ class Cli
     end
 
     def main_menu
-        input = get_input_one
+        input = get_input("1 or 2")
         puts "  "
         if input == "1"
            Api.load_ten_jokes
@@ -27,21 +27,21 @@ class Cli
             puts "Enter 4 for 'knock-knock jokes'"
             puts "Enter 5 for 'programming jokes'"
             puts " "
-            input_type = get_input_type
+            input_type = get_input("3-5")
                 if input_type == "3"
-                    Api.load_general_jokes
+                    Api.load_jokes("general")
                     Jokes.all.each_with_index do |joke, index|
                         puts "#{index+1}. #{joke.setup}"
                     end
                     sub_menu
                 elsif input_type == "4"
-                    Api.load_knockknock_jokes
+                    Api.load_jokes("knock-knock")
                     Jokes.all.each_with_index do |joke, index|
                         puts "#{index+1}. #{joke.setup}"
                     end
                     sub_menu_knock
                 elsif input_type == "5"
-                    Api.load_programming_jokes
+                    Api.load_jokes("programming")
                     Jokes.all.each_with_index do |joke, index|
                         puts "#{index+1}. #{joke.setup}"
                     end
@@ -64,7 +64,7 @@ class Cli
     def sub_menu
         puts "  "
         puts "Select the number of the joke you want to hear the punchline to"
-        input = get_input_two
+        input = get_input("1-10")
         puts "  "
         if input == "1" || input == "2" || input == "3" || input == "4" || input == "5" || input == "6" || input == "7" || input == "8" || input == "9" || input == "10"
             index = input.to_i - 1 
@@ -82,7 +82,7 @@ class Cli
     def sub_menu_knock
         puts "  "
         puts "Select the number of the joke you want to hear the punchline to"
-        input = get_input_knock
+        input = get_input("1-5")
         puts "  "
         if input == "1" || input == "2" || input == "3" || input == "4" || input == "5" 
             index = input.to_i - 1 
@@ -97,23 +97,8 @@ class Cli
         start
     end
 
-    def get_input_one
-        print "Enter Choice (1 or 2): "
-        gets.chomp
-    end
-
-    def get_input_two
-        print "Enter Choice (1-10): "
-        gets.chomp
-    end
-
-    def get_input_type
-        print "Enter Choice (3-5): "
-        gets.chomp
-    end
-
-    def get_input_knock
-        print "Enter Choice (1-5): "
+    def get_input(choice)
+        print "Enter Choice #{choice}: "
         gets.chomp
     end
 end
